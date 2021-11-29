@@ -1,6 +1,12 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %} Flasky Birds {% endblock %}
+{% block title %} BirdsApp{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -8,28 +14,26 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar">1</span>
+                <span class="icon-bar">2</span>
+                <span class="icon-bar">3</span>
             </button>
             <a class="navbar-brand" href="/">Bird Home</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/bird/eagle">Bird - Eagle</a></li>
-                <li><a href="/error">Bird - Error</a></li>
+                <li><a href="/error">Error Page</a></li>
                 <li><a href="/wiki">External - Wiki</a></li>
             </ul>
         </div>
     </div>        
 </div>
-
 {% endblock %}
 
 {% block content %}
-
 <div class="container">
     {% block page_content %}{% endblock %}
 </div>
-
 {% endblock %}
+
