@@ -1,11 +1,20 @@
 from flask import Flask, render_template, redirect
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 from datetime import datetime
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'the secret bird.app string'  # secret key for WTF to protect form communication
+
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+
+class BirdForm(FlaskForm):
+    birdname = StringField('Provide Bird Name', validators=[DataRequired()])
+    submit = SubmitField('Search')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -15,9 +24,14 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('500.html'), 500
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', current_time=datetime.utcnow(), locale='es')
+    birdname = None
+    form = BirdForm()
+    if form.validate_on_submit():
+        birdname = form.birdname.data
+        form.birdname.data = ''
+    return render_template('index.html', form=form, birdname=birdname, current_time=datetime.utcnow(), locale='es')
 
 @app.route("/bird/<name>")
 def bird(name):

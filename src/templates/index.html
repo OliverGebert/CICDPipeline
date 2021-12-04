@@ -3,14 +3,15 @@
 {% block title %} Flasky - Birds {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="page-header">
-        <h1>Bird Home Page</h1> 
-        <b>Hallo Oli, Max & Anne</b>
-        <h2>first thing to do</h2>
-        <p>local date and time is ({{locale}}): {{ moment(current_time).format('LLL') }} - {{ moment(current_time).fromNow(refresh=True) }}</p>
-    </div>
+<div class="page-header">
+    <h1>Bird Home Page</h1> 
+    <b>Hallo, {% if birdname %}{{ birdname }}{% else %}Stranger{% endif %}</b>
+    <h2>first thing to do: create app</h2>
+    <p>local date and time is ({{locale}}): {{ moment(current_time).format('LLL') }} - {{ moment(current_time).fromNow(refresh=True) }}</p>
 </div>
+
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
 {% endblock %}
 
 {% block scripts %}
