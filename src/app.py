@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, session, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
@@ -26,12 +26,13 @@ def internal_server_error(e):
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    birdname = None
     form = BirdForm()
     if form.validate_on_submit():
-        birdname = form.birdname.data
-        form.birdname.data = ''
-    return render_template('index.html', form=form, birdname=birdname, current_time=datetime.utcnow(), locale='es')
+        session['birdname'] = form.birdname.data
+        if session.get('birdname').strip() == "oli":
+            flash('hi oli, you are not a bird!')
+        return redirect(url_for('index'))
+    return render_template('index.html', form=form, birdname=session.get('birdname'), current_time=datetime.utcnow(), locale='es')
 
 @app.route("/bird/<name>")
 def bird(name):
