@@ -1,46 +1,48 @@
 = Raptor App Architecture
-:reproducible:
 
-this is documentation about the requirements and *architecture* auf Raptor app.
+:toc: auto
+:toclevels: 2
+:sectnums: 
+
+:icons: font
+IMPORTANT: This is documentation about the requirements and *architecture* of Raptor app.
+
 
 == Requirements
 
-The Raptor App provides uner interfaces for bird spotters to identify raptors in Germany, report the spotting and get reports on spottings by different criteria like raptor, location (GPS), season, daytime.
+The Raptor App provides uner interfaces for bird spotters to identify raptors in Germany, report the spotting and get reports on spottings by different criteria like raptor, location (GPS), season, daytime. +
+The Raptor App is divided into three user interfaces, one for each Actor. The Spotter has a Flask Based Web UI, same as the Researcher. The Maintainer has a CLI to upload and modify master data.
 
 === Actors
 
-Actors are defined to group joint use cases and interests regarding the Raptor App
-
-. *Spotter*
-    
- The Spotter is a person, who likes to verify or classify a bird spotting with the correct raptor classification. Also, the Spotter wants to register his classified spottings to contribute to the community.
-
-. *Researcher*
-
-. *Maintainer*
-
-    The Maintainer Actor provides all required information for Raptors in Germany. This allows correct classification of spottings and provides interesting background information on raptors in Germany.
+.Actors are defined to group joint use cases and interests regarding the Raptor App
+|===
+| Actor|Description
+| Spotter|The Spotter is a person, who likes to verify or classify a bird spotting with the correct raptor classification. Also, the Spotter wants to register his classified spottings to contribute to the community.
+| Researcher| The Researcher wants to analyze spottings of the raptor community.
+| Maintainer|The Maintainer provides master data for Raptors in Germany. This allows correct classification and background information.
+|===
 
 === User Stories
 
-    Note: User Stories for all Actors
+NOTE: User Stories for all Actors
 
-    . *Spotter*
-    * As a _Spotter_ I want to find the name of a raptor providing clues (classification)
-    * As a _Spotter_ I want to register my spotting with time and GPS stamps
-    * As a _Spotter_ I want to provide information on my professional level to classify spottings
-    * As a _Spotter_ I want to see all my recent spottings in a list with time, GPS and classification
-    * As a _Spotter_ I want to be recognized by the community with the number of sottings in the recent year
+. *Spotter*
+* As a _Spotter_ I want to find the name of a raptor providing clues (classification)
+* As a _Spotter_ I want to register my spotting with time and GPS stamps
+* As a _Spotter_ I want to provide information on my professional level to classify spottings
+* As a _Spotter_ I want to see all my recent spottings in a list with time, GPS and classification
+* As a _Spotter_ I want to be recognized by the community with the number of sottings in the recent year
 
-    . *Researcher*
-    * As a _Researcher_ I want to ensure, that all Spotters are registered identify and cleanup mal-reporting
-    * As a _Researcher_ I want to have a professional rating for all registered Spotters to allow sensitive reporting
-    * As a _Researcher_ I want to see maps with all reported raptors with filter function (season, raptor classification, daytime)
+. *Researcher*
+* As a _Researcher_ I want to ensure, that all Spotters are registered identify and cleanup mal-reporting
+* As a _Researcher_ I want to have a professional rating for all registered Spotters to allow sensitive reporting
+* As a _Researcher_ I want to see maps with all reported raptors with filter function (season, raptor classification, daytime)
 
-    . *Maintainer*
-    * As a _Maintainer_ I want to have an easy interface to upload all raptors in Germany with all required data
-    * As a _Maintainer_ I want to be able to add single new rators
-    * As a _Maintainer_ I want to be able to correct specitif data for rators
+. *Maintainer*
+* As a _Maintainer_ I want to have an easy interface to upload all raptors in Germany with all required data
+* As a _Maintainer_ I want to be able to add single new rators
+* As a _Maintainer_ I want to be able to correct specitif data for rators
 
 == Basic Architecture
 
