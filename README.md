@@ -1,6 +1,10 @@
-# Raptor App Class Diagram
+# The Raptor App
 
-this is all under construction ...
+Web application for identification and location reporting/analyses in Germany
+
+## Raptor App Class Diagram
+
+*this is all under construction* ...
 
 :::mermaid
 
@@ -13,4 +17,4 @@ classDiagram
     vehicle <|-- car 
 :::
 
-# Raptor Sequence Diagram
+## Raptor Sequence Diagram
