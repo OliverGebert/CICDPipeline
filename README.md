@@ -1,6 +1,9 @@
 # Raptor App Class Diagram
 
+this is all under construction ...
+
 :::mermaid
+
 classDiagram
     class BankAccount
     BankAccount : +String owner
