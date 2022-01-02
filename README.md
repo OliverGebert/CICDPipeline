@@ -1,5 +1,6 @@
-# CICDPipeline
+# Raptor App Class Diagram
 
+:::mermaid
 classDiagram
     class BankAccount
     BankAccount : +String owner
@@ -7,3 +8,6 @@ classDiagram
     BankAccount : +deposit(amount) bool
     BankAccount : +withdrawl(amount) int
     vehicle <|-- car 
+:::
+
+# Raptor Sequence Diagram
